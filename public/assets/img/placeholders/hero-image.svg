@@ -1,0 +1,6 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="250" cy="250" r="250" fill="#ffbe33"/>
+  <circle cx="250" cy="250" r="200" fill="#fff"/>
+  <text x="250" y="260" font-family="Arial, sans-serif" font-size="24" fill="#333" text-anchor="middle">BowlKuy</text>
+  <text x="250" y="290" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">Rice Bowl</text>
+</svg>
