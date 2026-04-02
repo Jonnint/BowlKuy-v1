@@ -1,169 +1,161 @@
-# 🍜 BowlKuy - Rice Bowl Ordering System
+# 🍜 BowlKuy
 
-BowlKuy adalah aplikasi web untuk pemesanan rice bowl yang dibangun dengan Laravel. Aplikasi ini mendukung **Auto-Detection Mode** yang secara otomatis beralih antara online/offline berdasarkan koneksi internet.
-
-## ✨ Fitur Utama
-
-### 🤖 Auto-Detection Mode (NEW!)
-- 🔍 **Otomatis detect internet** - Tidak perlu command manual
-- 🌐 **Ada internet** → Online mode (Google OAuth, Midtrans)
-- 📱 **Tidak ada internet** → Offline mode (Email login, manual transfer)
-- 🔄 **Real-time switching** - Otomatis berubah saat koneksi berubah
-- 📢 **Smart notifications** - Toast notification saat mode berubah
-
-### 🌐 Online Mode (Auto)
-- ✅ Google OAuth authentication
-- ✅ Midtrans payment gateway
-- ✅ Full online functionality
-
-### 📱 Offline Mode (Auto)
-- ✅ Berjalan tanpa internet
-- ✅ Login dengan email/password
-- ✅ Upload bukti transfer manual
-- ✅ Semua fitur CRUD tersedia
-- ✅ Admin dashboard lengkap
-
-## 🚀 Super Quick Start
-
-```bash
-# Just start the server - everything is automatic!
-php artisan serve
-
-# Open browser: http://localhost:8000
-```
-
-**That's it! No commands needed!** 🎉
-
-### What Happens Automatically:
-1. **Start server** → Auto-detection activates
-2. **Have internet** → Online mode (Google OAuth + Midtrans)
-3. **No internet** → Offline mode (Email login + Manual transfer)
-4. **Internet changes** → Auto-switches modes with notifications
-
-### Visual Indicators:
-- 🟢 **Online**: Green badges/dots everywhere
-- 🟡 **Offline**: Yellow badges/dots everywhere
-- 📢 **Toast notifications** when mode changes
-
-## 🎯 How It Works
-
-### Completely Automatic
-1. **Start server**: `php artisan serve`
-2. **Everything else is automatic**:
-   - ✅ Auto-detects internet connection
-   - ✅ Auto-switches between online/offline modes
-   - ✅ Auto-shows/hides features based on connection
-   - ✅ Auto-displays status indicators
-   - ✅ Auto-shows toast notifications on changes
-
-### No Manual Commands Needed!
-- ❌ No `php offline-mode.php on/off`
-- ❌ No `php test-auto-detection.php`
-- ❌ No manual configuration
-- ✅ Just start server and everything works!
-
-## 📊 Mode Comparison
-
-| Feature | Online Mode | Offline Mode |
-|---------|-------------|--------------|
-| Internet Required | ✅ | ❌ |
-| Google OAuth | ✅ | ❌ |
-| Midtrans Payment | ✅ | ❌ |
-| Email/Password Login | ✅ | ✅ |
-| Manual Transfer | ✅ | ✅ |
-| CRUD Operations | ✅ | ✅ |
-| Admin Dashboard | ✅ | ✅ |
-| Auto-Detection | ✅ | ✅ |
-
-## 📁 Offline Assets Structure
-
-```
-public/assets/
-├── vendor/
-│   ├── bootstrap/          # Bootstrap CSS & JS
-│   ├── fontawesome/        # Font Awesome icons
-│   ├── tailwind/          # Tailwind CSS
-│   ├── alpinejs/          # Alpine.js
-│   └── chartjs/           # Chart.js
-├── fonts/                 # Google Fonts offline
-├── img/placeholders/      # Placeholder images
-└── js/connection-monitor.js # Auto-detection script
-```
-
-## 🔧 API Endpoints
-
-```bash
-GET  /api/connection/status   # Check current connection status
-POST /api/connection/refresh  # Force refresh detection
-```
-
-## 📖 Dokumentasi
-
-- **[OFFLINE-MODE.md](OFFLINE-MODE.md)** - Dokumentasi lengkap auto-detection
-- **[cart fitur.md](cart%20fitur.md)** - Dokumentasi fitur cart
-- **[oauth google.md](oauth%20google.md)** - Setup Google OAuth
-
-## 🛠️ Tech Stack
-
-- **Backend**: Laravel 12
-- **Frontend**: Bootstrap 5, Tailwind CSS, Alpine.js
-- **Database**: MySQL/SQLite
-- **Payment**: Midtrans (online), Manual transfer (offline)
-- **Auth**: Laravel Breeze + Google OAuth
-- **Auto-Detection**: Custom PHP + JavaScript
-
-## 🎯 Use Cases
-
-### Development
-```bash
-# Just start server - auto-detection handles the rest
-php artisan serve
-```
-
-### Demo/Presentation
-```bash
-# Perfect for demos - works with or without internet
-php artisan serve
-# Disconnect internet → automatically switches to offline
-# Connect internet → automatically switches to online
-```
-
-### Production
-```bash
-# Works in any environment
-php artisan serve
-# Auto-adapts based on server's internet connection
-```
-
-## 🔍 Troubleshooting
-
-### Auto-detection not working?
-```bash
-php test-auto-detection.php
-```
-
-### UI not updating?
-- Refresh browser (F5)
-- Check browser console for errors
-
-### Stuck in offline mode?
-```bash
-curl http://localhost:8000/api/connection/refresh
-```
-
-## 🤝 Contributing
-
-1. Fork repository
-2. Create feature branch
-3. Test auto-detection: `php test-auto-detection.php`
-4. Submit pull request
-
-## 📄 License
-
-MIT License - lihat [LICENSE](LICENSE) untuk detail.
+Aplikasi web pemesanan rice bowl berbasis Laravel. Mendukung Google OAuth, Midtrans payment gateway, shopping cart, dan panel admin lengkap dengan analytics.
 
 ---
 
-**🎉 BowlKuy - Rice Bowl ordering dengan auto-detection internet! No more manual commands!**
+## Tech Stack
 
-    
+| Layer | Technology |
+|-------|-----------|
+| Backend | Laravel 12 (PHP 8.2+) |
+| Frontend | Tailwind CSS, Bootstrap 5, Alpine.js |
+| Database | MySQL / SQLite |
+| Auth | Laravel Breeze + Google OAuth (Socialite) |
+| Payment | Midtrans + Upload Bukti Transfer |
+| Charts | Chart.js |
+
+---
+
+## Fitur
+
+### User
+- Register & login via email/password atau Google OAuth
+- Browse menu dengan filter kategori
+- Shopping cart (tambah, update quantity, hapus)
+- Checkout & pembayaran (Midtrans atau upload bukti transfer)
+- Dashboard riwayat pesanan dengan status real-time
+
+### Admin
+- Dashboard analytics: total orders, revenue, customers, pending orders
+- Chart orders & revenue 30 hari terakhir
+- Top 5 menu terlaris
+- Manajemen orders dengan filter (customer, status, tanggal, bulan)
+- Verifikasi pembayaran (approve/reject bukti transfer)
+- Manajemen menu (tambah, edit, hapus + foto)
+- Data customer dengan tier system (Regular / Active / VIP)
+- Detail customer: total spent, favorite menu, riwayat order
+
+### Auto-Detection Mode
+- Otomatis detect koneksi internet
+- Ada internet → Google OAuth & Midtrans aktif
+- Tidak ada internet → fallback ke email login & manual transfer
+- Real-time indicator status koneksi di UI
+
+---
+
+## Instalasi
+
+### Prasyarat
+- PHP 8.2+
+- Composer
+- Node.js & NPM
+- MySQL (atau SQLite untuk development)
+
+### Setup
+
+```bash
+# 1. Clone repo
+git clone https://github.com/Jonnint/BowlKuy-v1.git
+cd BowlKuy-v1
+
+# 2. Install dependencies
+composer install
+npm install
+
+# 3. Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# 4. Konfigurasi database di .env, lalu jalankan migrasi
+php artisan migrate --seed
+
+# 5. Build assets
+npm run build
+
+# 6. Jalankan server
+php artisan serve
+```
+
+Buka `http://localhost:8000`
+
+---
+
+## Konfigurasi .env
+
+```env
+# Database
+DB_CONNECTION=mysql
+DB_DATABASE=bowlkuy
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_client_secret
+GOOGLE_REDIRECT_URI="${APP_URL}/auth/google/callback"
+
+# Midtrans
+MIDTRANS_SERVER_KEY=your_server_key
+MIDTRANS_CLIENT_KEY=your_client_key
+MIDTRANS_IS_PRODUCTION=false
+```
+
+### Setup Google OAuth
+1. Buka [Google Cloud Console](https://console.cloud.google.com/)
+2. Buat OAuth 2.0 credentials → Web application
+3. Tambahkan authorized redirect URI: `http://localhost:8000/auth/google/callback`
+4. Copy Client ID & Secret ke `.env`
+
+### Setup Midtrans
+1. Daftar di [Midtrans Dashboard](https://dashboard.midtrans.com/)
+2. Ambil Server Key & Client Key dari Settings → Access Keys
+3. Isi ke `.env`
+
+---
+
+## Struktur Database
+
+| Tabel | Deskripsi |
+|-------|-----------|
+| `users` | Data user + `google_id` + `is_admin` |
+| `menus` | Item menu (nama, harga, kategori, foto) |
+| `carts` | Item cart sementara per user |
+| `orders` | Data pesanan + status pembayaran + bukti transfer |
+
+### Status Pembayaran Order
+
+| Status | Keterangan |
+|--------|-----------|
+| `unpaid` | Belum bayar |
+| `pending_check` | Bukti transfer sudah diupload, menunggu verifikasi admin |
+| `paid` | Pembayaran dikonfirmasi |
+| `rejected` | Pembayaran ditolak admin |
+
+---
+
+## Akun Admin
+
+Untuk set user sebagai admin, update kolom `is_admin = 1` di tabel `users`, atau jalankan:
+
+```bash
+php artisan tinker
+# >>> \App\Models\User::where('email', 'your@email.com')->update(['is_admin' => 1]);
+```
+
+---
+
+## Offline Mode (Manual Override)
+
+Jika ingin force offline mode tanpa auto-detection:
+
+```bash
+php offline-mode.php on   # Aktifkan offline mode
+php offline-mode.php off  # Nonaktifkan offline mode
+```
+
+---
+
+## License
+
+MIT
